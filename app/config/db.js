@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
 const connectDB = async () => {
 	try {
@@ -7,6 +8,7 @@ const connectDB = async () => {
 			useCreateIndex: true,
 			useUnifiedTopology: true
 		});
+		autoIncrement.initialize(conn);
 		console.log(`Mongo Db connected ${conn.connection.host}`)
 	} catch (error) {
 		process.exit(1);
